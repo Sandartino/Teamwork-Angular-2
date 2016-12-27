@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UserPanelComponent } from './user-panel.component';
+import { UserPanelComponent } from './newpost.component.ts';
 
 describe('UserPanelComponent', () => {
   let component: UserPanelComponent;
