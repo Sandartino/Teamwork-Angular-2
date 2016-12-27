@@ -13,10 +13,11 @@
         <ul *ngIf="isAuthenticated === false" class="nav navbar-nav navbar-top">
           <li><a routerLink="users/login" id="loginLink">Login</a></li>
           <li><a routerLink="users/register" id="registerLink">Register</a></li>
+          <li><a routerLink="users/user-panel" id="userpanelLink">User Panel</a></li>
         </ul>
         <form *ngIf="isAuthenticated" (ngSubmit)="submitForm()" class = "form-horizontal" role="form">
           <ul class="nav navbar-nav navbar-right">
-            <li>              
+            <li>
                 <a routerLink="users/id">Hello {{user.email}} !</a>
             </li>
             <li>
