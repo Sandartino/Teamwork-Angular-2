@@ -1,0 +1,16 @@
+<form>
+  <div (ngSubmit)="onSubmit()" #user class="form-group">
+    <label for="title">TITLE</label>
+    <input type="text" class="form-control" id="title" required>
+  </div>
+  <div class="form-group">
+    <label for="alterEgo">CATEGORY</label>
+    <input type="text" class="form-control" id="alterEgo">
+  </div>
+  <div class="form-group">
+    <label for="textarea">CONTENT</label>
+    <textarea class="form-control" rows="7" id="textarea"></textarea>
+  </div>
+  <button type="submit" class="btn btn-default">POST</button>
+</form>
+
