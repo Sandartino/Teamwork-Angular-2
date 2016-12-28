@@ -1,38 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-//services
-import { AuthenticationService } from '../Common/services/AuthenticationService.service';
-import { AlertService } from '../Common/services/alert.service';
-import { UserService } from '../Common/services/user.service';
+import { UserService } from '../services/user.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent implements OnInit {
-
-    model: any = {};
+export class LoginComponent{
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private userService: UserService,
     private router: Router,
-    private alertService: AlertService
+    private app: AppComponent
     ) { }
-
-  ngOnInit() {
-    this.authenticationService.logout();
-  }
-
+  validCredentials = true;
+  loginUserData = {
+    username: '',
+    password: ''
+  };
   login() {
-    this.authenticationService.login(this.model.username, this.model.password)
+    this.userService.loginUser(this.loginUserData)
       .subscribe(data => {
-        this.router.navigateByUrl('home');
+        this.userService.saveAuthInSession(data)
+        this.router.navigate(['/home']);
+        this.app.toggleNavigation();
       },
-      error => {
-        this.alertService.error(error);
+      () => {
+        this.validCredentials = false;
       });
   }
-
 }

@@ -7,9 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 //services
-import { AlertService } from './Common/services/alert.service';
-import { AuthenticationService } from './Common/services/AuthenticationService.service';
-import { UserService } from './Common/services/user.service';
+import { UserService } from './services/user.service';
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -32,8 +30,6 @@ import { NewPostComponent } from './newpost/newpost.component';
     AppRoutingModule
   ],
   providers: [
-    AlertService,
-    AuthenticationService,
     UserService
   ],
   bootstrap: [AppComponent]
