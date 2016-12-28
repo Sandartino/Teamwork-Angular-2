@@ -8,9 +8,8 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent{
   private title = 'Article Blokg';
-  private user = {
-    email: 'guest@guest.com'
-  };
+  user = sessionStorage.getItem('username');
+  
   hasAuth: boolean;
 
   constructor(private userService: UserService, private router: Router) { }
