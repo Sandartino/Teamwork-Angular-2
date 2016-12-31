@@ -21,5 +21,4 @@ export class ArticlesListComponent implements OnInit {
       error => this.errorMessage = <any>error
     );
   }
-
 }
