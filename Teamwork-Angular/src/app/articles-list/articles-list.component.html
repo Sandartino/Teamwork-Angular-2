@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <div class="article-component" *ngFor="let article of articles">
+    <div class="article-info">
+      <h3 class="article-title">{{article.title}}</h3>
+      <p class="article-author"><b>By: </b> {{article._acl.creator}}</p>
+      <img class="article-img" [src]="article.image" [alt]="article.title" [title]="article.title"/>
+      <p class="article-description"><b>Content: </b> {{article.content.content}}</p>
+      <p class="article-start-date"><b>Start date: </b> {{article._kmd.lmt}}</p>
+    </div>
+  </div>
+</div>

@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 //services
 import { UserService } from './services/user.service';
+import { ArticleService } from './services/article.service';
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NewPostComponent } from './newpost/newpost.component';
+import { ArticlesListComponent } from './articles-list/articles-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { NewPostComponent } from './newpost/newpost.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    NewPostComponent
+    NewPostComponent,
+    ArticlesListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { NewPostComponent } from './newpost/newpost.component';
     AppRoutingModule
   ],
   providers: [
-    UserService
+    UserService,
+    ArticleService
   ],
   bootstrap: [AppComponent]
 })

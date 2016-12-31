@@ -1,3 +1,14 @@
-<p>
-    Hello
-</p>
+<div *ngIf = "!hasAuth" class="wrapper" id="background">
+    <h1 class="big-title">Welcome to our Article Blog!</h1>
+    <h3 class="intro-text">What would you like to do?</h3>
+
+    <div class="switch">
+        <h2 class="option-text">Create an Article</h2>
+    </div>
+
+    <button class="cta-begin"><a routerLink="/login">Get Started</a></button>
+</div>
+
+<div *ngIf = "hasAuth" class="wrapper">
+    <articles-list></articles-list>
+</div>
