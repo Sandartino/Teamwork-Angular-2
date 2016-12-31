@@ -15,10 +15,22 @@ export class UserService {
     let headers: Headers = new Headers({
             'Authorization': Kinvey.appAuthHeaders(),
             'Content-Type': 'application/json'
-        })
+        });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.dbUrl + '/login', data, options)
+    .map((response: Response) => response.json())
+    .catch(this.handleError);
+  }
+
+  registerUser(data) {
+    let headers: Headers = new Headers({
+            'Authorization': Kinvey.appAuthHeaders(),
+            'Content-Type': 'application/json'
+        });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.dbUrl, data, options)
     .map((response: Response) => response.json())
     .catch(this.handleError);
   }
@@ -55,6 +67,4 @@ export class UserService {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-
-
 }

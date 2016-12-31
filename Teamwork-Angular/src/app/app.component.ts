@@ -6,18 +6,17 @@ import { UserService } from './services/user.service';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent{
-  private title = 'Article Blokg';
-  user = sessionStorage.getItem('username');
-  
+export class AppComponent {
+  private title = 'Article Blog';
+  currentUser = sessionStorage.getItem('username');
   hasAuth: boolean;
 
   constructor(private userService: UserService, private router: Router) { }
 
   toggleNavigation() {
       this.hasAuth = !!sessionStorage.getItem('authToken');
+      this.currentUser = sessionStorage.getItem('username');
     }
-
 
     logout() {
         this.userService.logoutUser()
