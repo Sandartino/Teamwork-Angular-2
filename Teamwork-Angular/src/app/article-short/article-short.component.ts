@@ -20,7 +20,7 @@ export class ArticleShortComponent {
     this.title = article.title;
     this.image = article.image;
     this.content = article.content.content;
-    this.creator = article._acl.creator;
+    this.creator = article.creator || 'Guest';
     this.startDate = article._kmd.lmt;
   }
 

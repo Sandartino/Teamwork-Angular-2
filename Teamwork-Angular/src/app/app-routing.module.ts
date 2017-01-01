@@ -5,13 +5,15 @@ import {RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent} from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { NewPostComponent } from './newpost/newpost.component';
+import { NewArticleComponent } from './new-article/new-article.component';
+import { ArticlesPageComponent } from './articles-page/articles-page.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: 'users/login', component: LoginComponent},
     { path: 'users/register', component: RegisterComponent},
-    { path: 'users/newpost', component: NewPostComponent},
+    { path: 'users/new-article', component: NewArticleComponent},
+    { path: 'articles', component: ArticlesPageComponent},
     { path: 'home', component: HomeComponent },
 
 ]

@@ -14,9 +14,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { NewPostComponent } from './newpost/newpost.component';
+import { NewArticleComponent } from './new-article/new-article.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticleShortComponent } from './article-short/article-short.component';
+import { ArticlesPageComponent } from './articles-page/articles-page.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { ArticleShortComponent } from './article-short/article-short.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    NewPostComponent,
+    NewArticleComponent,
     ArticlesListComponent,
-    ArticleShortComponent
+    ArticleShortComponent,
+    ArticlesPageComponent
   ],
   imports: [
     BrowserModule,

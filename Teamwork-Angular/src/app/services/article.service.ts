@@ -25,6 +25,16 @@ export class ArticleService {
       .map((response: Response) => <IArticle[]>response.json())
       .catch(this.handleError);
   }
+
+  postArticle(data) {
+    let headers: Headers = new Headers({ 'Content-Type': 'application/json' })
+    headers.append('Authorization', 'Kinvey ' + sessionStorage.getItem('authToken'))
+    let options = new RequestOptions({ headers: headers })
+
+    return this.http.post(this.dbUrl, JSON.stringify(data), options)
+      .map(this.handleError)
+      .catch(err => Observable.throw(err))
+  }
   
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error')

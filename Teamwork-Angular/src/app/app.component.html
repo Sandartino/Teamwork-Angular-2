@@ -15,8 +15,9 @@
         </ul>
         <form *ngIf="hasAuth" (ngSubmit)="submitForm()" class = "form-horizontal" role="form">
           <ul class="nav navbar-nav navbar-right">
-            <li><a routerLink="users/newpost" id="newpostlLink">New Article</a></li>
             <li><a routerLink="users/id">Hello {{currentUser}} !</a></li>
+            <li><a routerLink="articles" id="newpostlLink">Articles</a></li>
+            <li><a routerLink="users/new-article" id="newpostlLink">New Article</a></li>
             <li><a (click)="logout()">Log off</a></li>
           </ul>
         </form>
