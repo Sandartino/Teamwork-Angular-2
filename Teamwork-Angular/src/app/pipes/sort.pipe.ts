@@ -33,22 +33,23 @@ export class SortPipe implements PipeTransform {
                     });
                 }
         } else if(sortBy === 'Title') {
+            let sorting = 'title';
             if (orderBy === 'Ascending') {
             return items.sort((x, y) => {
-                if (x[sortBy] > y[sortBy]) {
+                if (x[sorting] > y[sorting]) {
                     return 1;
                 }
-                if (x[sortBy] < y[sortBy]) {
+                if (x[sorting] < y[sorting]) {
                     return -1;
                 }
                 return 0;
             });
             } else {
                 return items.sort((x, y) => {
-                    if (x[sortBy] > y[sortBy]) {
+                    if (x[sorting] > y[sorting]) {
                         return -1;
                     }
-                    if (x[sortBy] < y[sortBy]) {
+                    if (x[sorting] < y[sorting]) {
                         return 1;
                     }
                     return 0;
