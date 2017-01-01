@@ -1,37 +1,51 @@
 import {Component, OnInit} from '@angular/core';
-import {NewPost}           from './newpost';
-import { Http } from '@angular/http';
+import {NewPost}           from './models/newpost.model';
+import {Router}            from '@angular/router';
+
+import {NewPostService}    from './services/newpost.service'
+import {BodyNewPostService}from './services/body-newpost.service'
+
 @Component({
   selector: 'app-newpost',
   templateUrl: './newpost.component.html',
-  styleUrls: ['./newpost.component.css']
+  styleUrls: ['./newpost.component.css'],
+  providers: [NewPostService, BodyNewPostService]
 })
+
 export class NewPostComponent implements OnInit {
-  newPost:NewPost;
-  heroesUrl = 'https://baas.kinvey.com/';
-  data:any;
-  constructor(private http: Http){}
+  newPost: NewPost;
+  body: any;
+
+  constructor(private newPostService:NewPostService,
+              private bodyNewPostService:BodyNewPostService,
+              private router:Router) {
+  }
 
   ngOnInit() {
-    this.newPost = {
-      title: '',
-      category: '',
-      content: ''
-    }
-    this.getData()
-    console.log(this.data);
+    this.newPost = new NewPost();
   }
 
-  getData(){
-    return this.data = this.http.get('https://baas.kinvey.com/paidmore@yahoo.com/kid_H1tVQj04e/58641ae6fbec15706afac22c')
-      .map(res => res.json())
+  makeBody() {
+    this.body = this.bodyNewPostService.makeBody(
+      this.newPost.title,
+      this.newPost.imageurl,
+      this.newPost.content
+    );
+    return JSON.stringify(this.body);
   }
+
   onSubmit() {
-    console.log(this.newPost);
+    this.makeBody();
+    this.newPostService.newPost(this.body)
+      .subscribe(
+        res => this.router.navigate(['/home']),
+        err => console.log(err)
+      )
   }
 
   reset(form) {
     form.reset();
+    return false;
   }
 
 }
