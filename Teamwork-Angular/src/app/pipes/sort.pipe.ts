@@ -9,22 +9,24 @@ export class SortPipe implements PipeTransform {
         let orderBy = sortAndOrder[1];
 
         if (sortBy === 'Date') {
+            let kmd = '_kmd';
+            let lmt = 'lmt';
             if (orderBy === 'Ascending') {
                     return items.sort((x, y) => {
-                        if (x['_kmd']['lmt'] > y['_kmd']['lmt']) {
+                        if (x[kmd][lmt] > y[kmd][lmt]) {
                             return 1;
                         }
-                        if (x['_kmd']['lmt'] < y['_kmd']['lmt']) {
+                        if (x[kmd][lmt] < y[kmd][lmt]) {
                             return -1;
                         }
                         return 0;
                     });
                 } else {
                     return items.sort((x, y) => {
-                        if (x['_kmd']['lmt'] > y['_kmd']['lmt']) {
+                        if (x[kmd][lmt] > y[kmd][lmt]) {
                             return -1;
                         }
-                        if (x['_kmd']['lmt'] < y['_kmd']['lmt']) {
+                        if (x[kmd][lmt] < y[kmd][lmt]) {
                             return 1;
                         }
                         return 0;
