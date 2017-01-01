@@ -8,7 +8,4 @@
 
     <button class="cta-begin"><a routerLink="/login">Get Started</a></button>
 </div>
-
-<div *ngIf = "hasAuth" class="wrapper">
-    <articles-list></articles-list>
-</div>
+<app-articles-page *ngIf = "hasAuth"></app-articles-page>

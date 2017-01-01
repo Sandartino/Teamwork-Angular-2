@@ -6,6 +6,27 @@ import { Component } from '@angular/core';
 })
 export class ArticlesPageComponent {
 
-  constructor() { }
+  sortBy: string;
 
+  orderBy: string;
+
+  pattern: string;
+    
+  constructor() { 
+    this.sortBy = 'date';
+    this.orderBy = 'title';
+    this.pattern = '';
+  }
+
+    sorting(value: string) {
+        this.sortBy = value;
+    }
+
+    titleFilter(value: string) {
+        this.pattern = value;
+    }
+
+    ordering(value: string) {
+        this.orderBy = value;
+    }
 }

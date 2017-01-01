@@ -1,18 +1,41 @@
 import { AppComponent } from './../app.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { ArticleService } from '../services/article.service';
 import { IArticle } from './article';
 
+@Injectable()
 @Component({
   selector: 'articles-list',
   templateUrl: './articles-list.component.html',
 })
 export class ArticlesListComponent implements OnInit {
 
+  pageTitle: string;
+  sort: string;
+  order: string;
+  pattern: string;
   articles: IArticle[];
   private errorMessage: any;
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService) {
+    this.pageTitle = 'Articles';
+    this.articles = [];
+    this.pattern = '';
+   }
+
+  @Input('sortBy') set sortBy(sortBy: string) {
+      this.sort = sortBy;
+      this.pattern = this.pattern || '';
+  }
+
+  @Input('orderBy') set orderBy(orderBy: string) {
+      this.order = orderBy;
+      this.pattern = this.pattern || '';
+  }
+
+  @Input('pattern') set titleFilter(titleFilter: string) {
+      this.pattern = titleFilter || '';
+  }
 
   ngOnInit() {
     this.articleService.getArticles()
@@ -20,5 +43,9 @@ export class ArticlesListComponent implements OnInit {
       articles => this.articles = articles,
       error => this.errorMessage = <any>error
     );
+    console.log(this.articles);
+    console.log(this.sort);
+    console.log(this.pattern);
+    console.log(this.order);
   }
 }

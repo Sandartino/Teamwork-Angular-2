@@ -1,3 +1,4 @@
-<div class="container-fluid">
-  <articles-list></articles-list>
-</div>
+<app-title-search (titleFilter)="titleFilter($event)"></app-title-search>
+<app-articles-sort-by (selectSort)="sorting($event)"></app-articles-sort-by>
+<app-articles-order-by (selectOrder)="ordering($event)"></app-articles-order-by>
+<articles-list [sortBy]="sortBy" [orderBy]="orderBy" [pattern]="pattern" ></articles-list>

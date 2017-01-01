@@ -9,6 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 //services
 import { UserService } from './services/user.service';
 import { ArticleService } from './services/article.service';
+
+//Pipes
+import { SortPipe } from './pipes/sort.pipe';
+import { FilterTitlePipe } from './pipes/filter-title.pipe';
+
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -18,9 +23,15 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticleShortComponent } from './article-short/article-short.component';
 import { ArticlesPageComponent } from './articles-page/articles-page.component';
+import { TitleSearchComponent } from './title-search/title-search.component';
+import { ArticlesSortByComponent } from './articles-sort-by/articles-sort-by.component';
+import { ArticlesOrderByComponent } from './articles-order-by/articles-order-by.component';
 
 @NgModule({
   declarations: [
+    SortPipe,
+    FilterTitlePipe,
+
     AppComponent,
     HomeComponent,
     LoginComponent,
@@ -28,7 +39,10 @@ import { ArticlesPageComponent } from './articles-page/articles-page.component';
     NewArticleComponent,
     ArticlesListComponent,
     ArticleShortComponent,
-    ArticlesPageComponent
+    ArticlesPageComponent,
+    TitleSearchComponent,
+    ArticlesSortByComponent,
+    ArticlesOrderByComponent
   ],
   imports: [
     BrowserModule,
