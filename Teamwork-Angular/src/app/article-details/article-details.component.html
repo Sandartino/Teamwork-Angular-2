@@ -1,20 +1,57 @@
-<div class="wrapper" *ngIf="article">
-    <input class="back-btn" type="button" value="Back" (click)="onBack()">
-  <h3 class="cause-title">{{article.title}}</h3>
-  <div class="cause-component">
+<!--<div class="wrapper" *ngIf="article">-->
+    <!--<input class="back-btn" type="button" value="Back" (click)="onBack()">-->
+  <!--<h3 class="cause-title">{{article.title}}</h3>-->
+  <!--<div class="cause-component">-->
 
-    <div class="left">
-      <img class="cause-img" [src]="article.image" [alt]="article.title" [title]="article.title"/>
-    </div>
+    <!--<div class="left">-->
+      <!--<img class="cause-img" [src]="article.image" [alt]="article.title" [title]="article.title"/>-->
+    <!--</div>-->
 
-    <div class="right">
-      <p class="cause-author"><b>By: </b> {{article.creator}}</p>
-      <p class="cause-category"><b>Category:</b> {{article.category}}</p>
-      <p class="cause-description"><b> Description:</b>{{article.content}}</p>
-      <p class="cause-start-date"><b> Start Date:</b>{{article._kmd.lmt | date}}</p>
+    <!--<div class="right">-->
+      <!--<p class="cause-author"><b>By: </b> {{article.creator}}</p>-->
+      <!--<p class="cause-category"><b>Category:</b> {{article.category}}</p>-->
+      <!--<p class="cause-description"><b> Description:</b>{{article.content}}</p>-->
+      <!--<p class="cause-start-date"><b> Start Date:</b>{{article._kmd.lmt | date}}</p>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<comment-box [articleId]="article._id"> </comment-box>-->
+
+<!--</div>-->
+
+
+<div class="container" *ngIf="article">
+  <input class="back-btn" type="button" value="Back" (click)="onBack()">
+  <div class="row">
+    <div class="span12">
+      <div class="row">
+        <div class="span8">
+          <h4><strong><a [routerLink]="['/articles', articleId]">{{article.title}}</a></strong></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <a style="float: left;margin-right: 20px" href="#">
+            <img class="cause-img" [src]="article.image" [alt]="article.title" [title]="article.title"/>
+          </a>
+        </div>
+        <div class="span10">
+          <p style="word-wrap: break-word;width: 93%;">
+            {{article.content}}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span8">
+          <p></p>
+          <p>
+            <i class="icon-user"></i> by: <i>{{article.creator}}</i>
+            | <i class="icon-calendar"></i> {{article._kmd.lmt | date}}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-
+  <hr>
   <comment-box [articleId]="article._id"> </comment-box>
-
 </div>
