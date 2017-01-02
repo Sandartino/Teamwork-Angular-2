@@ -15,6 +15,7 @@ export class CommentComponent implements OnInit {
     private commentService: CommentsService;
     @Input() articleId: string;
     errorMessage: any;
+    private currentUser = sessionStorage.getItem('username');
 
     commentData = {
         content: ''
@@ -35,7 +36,6 @@ export class CommentComponent implements OnInit {
                 },
                         error => this.errorMessage = <any>error
             );
-
     }
 
     ngOnInit(): void {
@@ -54,4 +54,16 @@ export class CommentComponent implements OnInit {
                         error => this.errorMessage = <any>error
             );
     }
+
+    deleteComment(_id: string) {
+      this.commentService.deleteComment(_id)
+          .subscribe(
+              userInfo => {
+                this.router.navigate(['/articles']);
+              },
+              () => {
+                console.log('Error occurred');
+              }
+          );
+  }
 }
