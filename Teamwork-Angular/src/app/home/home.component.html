@@ -6,6 +6,9 @@
         <h2 class="option-text">Create an Article</h2>
     </div>
 
-    <button class="cta-begin"><a routerLink="/login">Get Started</a></button>
+    <button class="cta-begin"><a routerLink="/users/register">Get Started</a></button>
 </div>
-<app-articles-page *ngIf = "hasAuth"></app-articles-page>
+<div *ngIf = "hasAuth">
+    <app-articles-page ></app-articles-page>
+</div>
+

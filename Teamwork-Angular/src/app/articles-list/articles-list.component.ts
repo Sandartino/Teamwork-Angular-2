@@ -23,6 +23,14 @@ export class ArticlesListComponent implements OnInit {
     this.pattern = '';
    }
 
+  ngOnInit() {
+    this.articleService.getArticles()
+    .subscribe(
+      articles => this.articles = articles,
+      error => this.errorMessage = <any>error
+    );
+  }
+
   @Input('sortBy') set sortBy(sortBy: string) {
       this.sort = sortBy;
       this.pattern = this.pattern || '';
@@ -35,17 +43,5 @@ export class ArticlesListComponent implements OnInit {
 
   @Input('pattern') set titleFilter(titleFilter: string) {
       this.pattern = titleFilter || '';
-  }
-
-  ngOnInit() {
-    this.articleService.getArticles()
-    .subscribe(
-      articles => this.articles = articles,
-      error => this.errorMessage = <any>error
-    );
-    console.log(this.articles);
-    console.log(this.sort);
-    console.log(this.pattern);
-    console.log(this.order);
   }
 }

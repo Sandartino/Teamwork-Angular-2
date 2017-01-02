@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterTitlePipe implements PipeTransform {
     transform(items: any[], pattern: string): any[] {
         return items.filter(x => {
-            return x['Title'].indexOf(pattern) >= 0;
+            return x['title'].toLowerCase().indexOf(pattern.toLowerCase()) >= 0;
         });
     }
 }

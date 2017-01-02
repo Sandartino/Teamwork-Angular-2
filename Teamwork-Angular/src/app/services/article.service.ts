@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { IArticle } from '../articles-list/article'
+import { IArticle } from '../articles-list/article';
 
 import { Kinvey } from './Kinvey';
 
@@ -35,8 +35,19 @@ export class ArticleService {
       .map(this.handleError)
       .catch(err => Observable.throw(err))
   }
+
+  getArticle(_id: string): Observable<any> {
+    let url = this.dbUrl + '/' + _id;
+    let headers: Headers = new Headers({ 'Accept': 'application/json' });
+    headers.append('Authorization', 'Kinvey ' + sessionStorage.getItem('authToken'))
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(url, options)
+      .map((response: Response) => <any>response.json())
+      .catch(this.handleError);
+  }
   
   private handleError(error: Response) {
-    return Observable.throw(error.json().error || 'Server error')
+    return Observable.throw(error.json().error || 'Server error');
   }
 }

@@ -1,5 +1,5 @@
 <div class="article-info">
-      <h3 class="article-title">{{title}}</h3>
+      <h3 class="article-title"><a [routerLink]="['/articles', articleId]">{{title}}</a></h3>
       <p class="article-author"><b>By: </b> {{creator}}</p>
       <img class="article-img" [src]="image" [alt]="title" [title]="title"/>
       <p class="article-description"><b>Content: </b> {{content}}</p>
