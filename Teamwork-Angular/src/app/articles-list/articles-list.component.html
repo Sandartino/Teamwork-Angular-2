@@ -1,6 +1,6 @@
 <h1>{{pageTitle}}</h1>
-<div class="container">
-  <div class="article-component" *ngFor="let article of (articles | sort: [sort, order] )">
+<div class="col-md-12 movies-container">
+  <div *ngFor="let article of (articles | filterTitle: pattern | sort: [sort, order] )" class="list-group-item">
     <article-short [article]="article"></article-short>
   </div>
 </div>
