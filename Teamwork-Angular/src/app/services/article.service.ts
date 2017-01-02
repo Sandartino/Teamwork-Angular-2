@@ -38,15 +38,27 @@ export class ArticleService {
 
   getArticle(_id: string): Observable<any> {
     let url = this.dbUrl + '/' + _id;
-    let headers: Headers = new Headers({ 'Accept': 'application/json' });
+    let headers: Headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', 'Kinvey ' + sessionStorage.getItem('authToken'))
     let options = new RequestOptions({ headers: headers });
 
     return this.http.get(url, options)
-      .map((response: Response) => <any>response.json())
+      .map((response: Response) => response.json())
       .catch(this.handleError);
   }
-  
+
+  deleteArticle(_id: string) {
+    let url = this.dbUrl + '/' + _id;
+    let headers: Headers = new Headers({
+      'Authorization': `Kinvey ` +  sessionStorage.getItem('authToken')
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(url, options)
+        .map((response: Response) => <IArticle>response.json())
+        .catch(this.handleError);
+  }
+
   private handleError(error: Response) {
     return Observable.throw(error.json().error || 'Server error');
   }

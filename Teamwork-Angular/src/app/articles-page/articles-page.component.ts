@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-articles-page',
   templateUrl: './articles-page.component.html'
 })
 export class ArticlesPageComponent {
@@ -14,7 +13,7 @@ export class ArticlesPageComponent {
     
   constructor() { 
     this.sortBy = 'date';
-    this.orderBy = 'title';
+    this.orderBy = 'Descending';
     this.pattern = '';
   }
 

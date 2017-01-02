@@ -27,7 +27,7 @@ export class RegisterComponent {
                 .subscribe(
                     userInfo => {
                         this.userService.saveAuthInSession(userInfo);
-                        this.router.navigate(['/home']);
+                        this.router.navigate(['/articles']);
                         this.app.toggleNavigation();
                     },
                     () => {

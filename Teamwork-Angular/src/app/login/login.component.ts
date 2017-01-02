@@ -23,7 +23,7 @@ export class LoginComponent{
     this.userService.loginUser(this.loginUserData)
       .subscribe(data => {
         this.userService.saveAuthInSession(data)
-        this.router.navigate(['/home']);
+        this.router.navigate(['/articles']);
         this.app.toggleNavigation();
       },
       () => {

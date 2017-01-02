@@ -27,7 +27,11 @@ import { TitleSearchComponent } from './title-search/title-search.component';
 import { ArticlesSortByComponent } from './articles-sort-by/articles-sort-by.component';
 import { ArticlesOrderByComponent } from './articles-order-by/articles-order-by.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+
 import { AboutComponent } from './about/about.component';
+
+import { AuthGuard } from './_guards/auth.guard';
+import { CommentComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { AboutComponent } from './about/about.component';
     ArticlesSortByComponent,
     ArticlesOrderByComponent,
     ArticleDetailsComponent,
+
     AboutComponent
+
+    CommentComponent
+
   ],
   imports: [
     BrowserModule,
@@ -56,7 +64,8 @@ import { AboutComponent } from './about/about.component';
   ],
   providers: [
     UserService,
-    ArticleService
+    ArticleService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -1,17 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../services/article.service';
 import { Observable } from 'rxjs/Observable';
-import { IArticle } from '../articles-list/article';
-import { Router, ActivatedRoute } from '@angular/router';
+import { AdventureModel } from './article.model';
+import { Router, ActivatedRoute, Routes } from '@angular/router';
 
 @Component({
   templateUrl: './article-details.component.html',
 })
-export class ArticleDetailsComponent implements OnInit, OnDestroy {
+export class ArticleDetailsComponent implements OnInit {
 
-  sub: any;
-
-  article: string[];
+  article: any;
 
   errorMessage: string;
 
@@ -19,29 +17,25 @@ export class ArticleDetailsComponent implements OnInit, OnDestroy {
     private articleService: ArticleService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.article = '';
+   }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(
-            params => {
-                let id = params['id'];
-                this.getArticle(id);
-                });
+    let articleId = this.route.snapshot.params['id'];
+    this.getArticle(articleId);
   }
 
-  getArticle(id: string){
-    this.articleService.getArticle(id).subscribe(
-      article => this.article = article,
-      error => this.errorMessage = <any>error)
-  }
-
-  ngOnDestroy() {
-    // Clean sub to avoid memory leak
-    this.sub.unsubscribe();
+  getArticle(articleId: string) {
+    this.articleService
+    .getArticle(articleId)
+    .subscribe(
+      data => this.article = data,
+      error => this.errorMessage = <any>error);
   }
 
   onBack(): void {
         this.router.navigate(['/articles']);
-  }
+    }
 
 }

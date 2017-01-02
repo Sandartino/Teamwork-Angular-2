@@ -2,6 +2,7 @@ import { AppComponent } from './../app.component';
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { ArticleService } from '../services/article.service';
 import { IArticle } from './article';
+import { Router } from '@angular/router';
 
 @Injectable()
 @Component({
@@ -16,14 +17,17 @@ export class ArticlesListComponent implements OnInit {
   pattern: string;
   articles: IArticle[];
   private errorMessage: any;
+  private currentUser = sessionStorage.getItem('username');
 
-  constructor(private articleService: ArticleService) {
+  constructor(
+    private articleService: ArticleService,
+  private router: Router) {
     this.pageTitle = 'Articles';
     this.articles = [];
     this.pattern = '';
    }
 
-  ngOnInit() {
+   ngOnInit() {
     this.articleService.getArticles()
     .subscribe(
       articles => this.articles = articles,
@@ -43,5 +47,19 @@ export class ArticlesListComponent implements OnInit {
 
   @Input('pattern') set titleFilter(titleFilter: string) {
       this.pattern = titleFilter || '';
+  }
+  
+  
+
+  deleteCurrentArticle(_id: string) {
+      this.articleService.deleteArticle(_id)
+          .subscribe(
+              userInfo => {
+                this.router.navigate(['/articles']);
+              },
+              () => {
+                console.log('Error occurred');
+              }
+          );
   }
 }
