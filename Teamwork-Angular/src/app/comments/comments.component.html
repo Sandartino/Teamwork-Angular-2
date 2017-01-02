@@ -1,0 +1,24 @@
+<div>
+    <h3 class="comments-title">Comments</h3>
+    <div class="comment-box" *ngFor="let comment of comments">
+        <p class="comment-content">Comment : {{comment.content}}</p>
+        <p class="author">Author: {{comment.author}}</p>
+    </div>
+
+<form (ngSubmit)="addComment()" id="comment-form">
+    <div>
+        <h3 class="prompt">Add new comment</h3>
+        <textarea rows="10"
+                  [(ngModel)]="commentData.content"
+                  ngModel minlength="10"
+                  ngModel maxlength="200"
+                  name="comment"
+                  id="comment"
+                  placeholder="Comment"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Add Comment">
+    </div>
+</form>
+
+</div>

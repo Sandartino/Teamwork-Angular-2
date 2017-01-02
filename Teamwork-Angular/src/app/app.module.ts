@@ -27,7 +27,8 @@ import { TitleSearchComponent } from './title-search/title-search.component';
 import { ArticlesSortByComponent } from './articles-sort-by/articles-sort-by.component';
 import { ArticlesOrderByComponent } from './articles-order-by/articles-order-by.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
-
+import { AuthGuard } from './_guards/auth.guard';
+import { CommentComponent } from './comments/comments.component';
 @NgModule({
   declarations: [
     SortPipe,
@@ -44,7 +45,8 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
     TitleSearchComponent,
     ArticlesSortByComponent,
     ArticlesOrderByComponent,
-    ArticleDetailsComponent
+    ArticleDetailsComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
   ],
   providers: [
     UserService,
-    ArticleService
+    ArticleService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

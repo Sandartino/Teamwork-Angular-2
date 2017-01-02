@@ -2,5 +2,6 @@
 <div class="col-md-12 movies-container">
   <div *ngFor="let article of (articles | filterTitle: pattern | sort: [sort, order] )" class="list-group-item">
     <article-short [article]="article"></article-short>
+    <button class="cause-delete" *ngIf="article.creator == currentUser" (click)="deleteCurrentArticle(article._id)">Delete Article</button>
   </div>
 </div>
