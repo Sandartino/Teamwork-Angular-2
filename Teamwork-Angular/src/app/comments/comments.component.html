@@ -3,6 +3,7 @@
     <div class="comment-box" *ngFor="let comment of comments">
         <p class="comment-content">Comment : {{comment.content}}</p>
         <p class="author">Author: {{comment.author}}</p>
+        <button class="btn-danger" *ngIf="comment.author == currentUser" (click)="deleteComment(comment._id)">Delete Comment</button>
     </div>
 
 <form (ngSubmit)="addComment()" id="comment-form">

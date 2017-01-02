@@ -47,6 +47,24 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    getUserData() {
+        return {
+            firstName : sessionStorage.getItem('firstName'),
+            lastName : sessionStorage.getItem('lastName'),
+        }
+    }
+
+    changeUser(data, checkPass){
+        let headers: Headers = new Headers({
+            'Authorization': "Basic " + btoa(sessionStorage.getItem("username") + ':' + checkPass),
+            'Content-Type': 'application/json'
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.put(this.dbUrl + "/" + sessionStorage.getItem("userId"), JSON.stringify(data), options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+
     saveAuthInSession(userInfo: any) {
         sessionStorage.setItem("userId", userInfo._id);
         sessionStorage.setItem("username", userInfo.username);

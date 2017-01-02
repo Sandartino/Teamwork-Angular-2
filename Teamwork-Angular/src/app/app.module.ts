@@ -27,6 +27,8 @@ import { TitleSearchComponent } from './title-search/title-search.component';
 import { ArticlesSortByComponent } from './articles-sort-by/articles-sort-by.component';
 import { ArticlesOrderByComponent } from './articles-order-by/articles-order-by.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { UserProfileComponent } from './user-panel/user-panel.component';
+import { PageNotFoundComponent } from './pageNotFound/page-not-found.component';
 
 import { AboutComponent } from './about/about.component';
 
@@ -50,11 +52,12 @@ import { CommentComponent } from './comments/comments.component';
     ArticlesSortByComponent,
     ArticlesOrderByComponent,
     ArticleDetailsComponent,
+    UserProfileComponent,
+    PageNotFoundComponent,
 
-    AboutComponent
+    AboutComponent,
 
-    CommentComponent
-
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

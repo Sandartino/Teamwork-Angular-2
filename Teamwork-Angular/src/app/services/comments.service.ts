@@ -29,7 +29,18 @@ export class CommentsService {
         let options = new RequestOptions({ headers: headers });
 
         return this.http.get(this.dbUrl, options)
-            .map((response: Response) => <IComment[]>response.json())
+            .map((response: Response) => <IComment[]>response.json());
     }
+
+    deleteComment(_id: string) {
+    let url = this.dbUrl + '/' + _id;
+    let headers: Headers = new Headers({
+      'Authorization': `Kinvey ` +  sessionStorage.getItem('authToken')
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(url, options)
+        .map((response: Response) => <IComment>response.json());
+  }
 
 }
