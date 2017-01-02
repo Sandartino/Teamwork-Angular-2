@@ -27,6 +27,7 @@ import { TitleSearchComponent } from './title-search/title-search.component';
 import { ArticlesSortByComponent } from './articles-sort-by/articles-sort-by.component';
 import { ArticlesOrderByComponent } from './articles-order-by/articles-order-by.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
     TitleSearchComponent,
     ArticlesSortByComponent,
     ArticlesOrderByComponent,
-    ArticleDetailsComponent
+    ArticleDetailsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
