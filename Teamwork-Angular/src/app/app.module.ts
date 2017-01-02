@@ -50,9 +50,7 @@ import { CommentComponent } from './comments/comments.component';
     ArticlesSortByComponent,
     ArticlesOrderByComponent,
     ArticleDetailsComponent,
-
-    AboutComponent
-
+    AboutComponent,
     CommentComponent
 
   ],

@@ -4,7 +4,8 @@ import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
 
 @Component({
-  templateUrl: './register.component.html'
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
   userExist = false;
